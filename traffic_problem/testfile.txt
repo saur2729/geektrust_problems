@@ -1,0 +1,23 @@
+SUNNY 12 10
+WINDY 14 20
+RAINY 8 15
+RAINY 40 25
+
+#TUKTUK ORBIT1
+#CAR ORBIT2
+#TUKTUK ORBIT2
+#CAR ORBIT2
+
+#Conditions
+# Orbit 1 - 18 mega miles & 20 craters to cross
+# Orbit 2 - 20 mega miles & 10 craters to cross
+
+# BIKE - 10 megamiles/hour & takes 2 min to cross 1 crater
+# TUKTUK - 12 mm/hour & takes 1 min to cross 1 crater
+# CAR - 20 mm/hour & takes 3 min to cross 1 crater
+
+# SUNNY - craters reduce by 10%. Car, bike and tuktuk can be used in this weather.
+# RAINY - craters increase by 20%. Car and tuktuk can be used in this weather.
+# WINDY - no change to number of craters. Car and bike can be used in this weather.
+
+# tie in which vehicle to choose, use bike > auto > car in that order
