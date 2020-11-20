@@ -4,6 +4,7 @@ import argparse
 class Traffic:
   def __init__(self, test_file):
     self.test_file = test_file
+    # constant factors
     self.orbit_data = {
       "ORBIT1": [18, 20], # orbitTag : [megamile, no of craters to cross]
       "ORBIT2": [20, 10]
@@ -42,6 +43,7 @@ class Traffic:
           orb_maxspd = orb2_trfc_spd if orb2_trfc_spd < self.vehicle_data[vech][0] else self.vehicle_data[vech][0]
 
         time_stats = self.find_time(weather, orbit, orb_maxspd, vech)
+
         # print(" -- ", time_stats)
         if not min_time:
           min_time = time_stats
@@ -54,10 +56,15 @@ class Traffic:
   def fastest_path(self):
     with open(self.test_file) as fp:
       for line in fp.readlines():
-        if line.strip().startswith("#") or not line.strip(): # remove this condition before submitting
+        if line.strip().startswith("#") or not line.strip(): # ignore the comments and empty lines
           continue
-        weather, orb1_trfc_spd, orb2_trfc_spd = line.strip().split()
+        try:
+          weather, orb1_trfc_spd, orb2_trfc_spd = line.strip().split()
+        except ValueError:
+          continue # continue if number of input params != 3
+
         # print(line.strip(), self.get_fastest(weather, float(orb1_trfc_spd), float(orb2_trfc_spd)))
+
         fastest_way = self.get_fastest(weather, float(orb1_trfc_spd), float(orb2_trfc_spd))
         print(" ".join(fastest_way[1:]))
 
